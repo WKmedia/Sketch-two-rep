@@ -13,37 +13,47 @@
         const bodyContainer = document.createElement('div');
             bodyContainer.setAttribute('class', 'gridCellDiv');
             bodyContainer.style.border = 'solid blue .5px';
-            bodyContainer.style.boxSizing = 'border-box';
-            bodyContainer.style.padding = '0';
-            bodyContainer.style.width = '960px';
+            // bodyContainer.style.boxSizing = 'border-box';
+            bodyContainer.style.padding = '0px';
+            bodyContainer.style.width = '1200px';
             bodyContainer.style.margin = 'auto';
             bodyContainer.style.display = 'flex';
             bodyContainer.style.flexWrap = 'wrap';
+            bodyContainer.style.alignContent = 'center';
+            bodyContainer.style.justifyContent = 'center';
             
 
             document.body.append(bodyContainer);
 ////Grid cell
         const gridCell = document.createElement('div');
-            gridCell.setAttribute('class', 'grid-cell');            
-            gridCell.style.border = 'solid red 1px';
+            gridCell.setAttribute('class', 'grid-cell');
+            gridCell.style.padding= '0px';            
+            gridCell.style.border = 'solid red .2px';
 
+
+            const cellDivide1080 = 1080 / 16;
+            const cellWidthHeight = cellDivide1080 - .8;
  ///Function Clone grid cell
         function gridRow(number) {
-            let gridDiv = gridCell.cloneNode(true);
-                gridDiv.style.width = '51.5px';
-                gridDiv.style.height = '51.5px';
+            let gridDiv = gridCell.cloneNode(true);            
+            if (bodyContainer.style.width == '1200px') {
+                gridDiv.style.width = `${cellWidthHeight}px`;
+                gridDiv.style.height = `${cellWidthHeight}px`;
+                // console.log(cellWidthHeight);              
+            }
+                
 
 ////Mouseover event listener
             gridDiv.addEventListener('mouseover', function() {
-                this.style.border = 'solid blue 1px';
+                // this.style.border = 'solid blue 1px';
                 this.style.backgroundColor = 'blue';
                 // console.log('mouse over');
 
                 });
 /////MouseOut event listener
             gridDiv.addEventListener('mouseout', function() {
-                this.style.border = 'solid red 1px';
-                this.style.backgroundColor = 'white';
+                // this.style.border = 'solid red 1px';
+                this.style.backgroundColor = '';
                 // console.log('mouse out');
                 });
 
@@ -54,28 +64,59 @@
             bodyContainer.append(gridDiv);
 
         }   
-
+        // function calculateCellAmount(n) {
+            
+        //     let calcTotalSq = (n * (n + 1) * (2 * n + 1)) / 6;
+            
+        //     console.log(calcTotalSq);
+        //     return calcTotalSq ;
+        // }
+        // const n = 100;
+        // const totalSquares = calculateCellAmount(n);
+        // console.log(`Total number of squares in a ${n}x${n} grid: ${totalSquares}`);
+        // // calculateCellAmount();
+        
        
 ///Duplicate grid cell
         function duplicateGridDiv(number) {
-            number = 12;
+            // let cellDivideCells = cellWidthHeight / 16;
+            //     console.log(cellDivideCells);
+            //     let cellCount = Math.round(1080 / cellDivideCells);
+            //     console.log(cellCount);
+            //     number = cellCount;
+            //     console.log(number)
+                number = 16;
             let answer = number * 16;
             for (let i = 0; i < number; i++) {
                 gridRow();
-                console.log(gridRow)
+                
                
             }
         }
+
+        duplicateGridDiv();
 
 ///Duplicate grid row
         function duplicateGridRow(number) {
             number = 16 ;//* 16;
             for (let i = 0; i < number; i++) {
                 duplicateGridDiv();
-    
+                
             }
         }
         duplicateGridRow();
+
+
+        // function calculateTotalSquares(n) {
+        //     return (n * (n + 1) * (2 * n + 1)) / 6;
+        //     }
+
+        //     const n = 12; // Replace with the number of rows or columns in your grid
+        //     const totalSquares = calculateTotalSquares(n);
+        //     console.log(`Total number of squares in a ${n}x${n} grid: ${totalSquares}`);
+
+            
+
 
     </script>
 
