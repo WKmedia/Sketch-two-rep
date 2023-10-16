@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sketch</title>
+</head>
+<body>
+    
+
+    <script>
+/////Body container
+        const bodyContainer = document.createElement('div');
+            bodyContainer.setAttribute('class', 'gridCellDiv');
+            bodyContainer.style.border = 'solid blue .5px';
+            bodyContainer.style.boxSizing = 'border-box';
+            bodyContainer.style.padding = '0';
+            bodyContainer.style.width = '960px';
+            bodyContainer.style.margin = 'auto';
+            bodyContainer.style.display = 'flex';
+            bodyContainer.style.flexWrap = 'wrap';
+            
+
+            document.body.append(bodyContainer);
+////Grid cell
+        const gridCell = document.createElement('div');
+            gridCell.setAttribute('class', 'grid-cell');            
+            gridCell.style.border = 'solid red 1px';
+
+ ///Function Clone grid cell
+        function gridRow(number) {
+            let gridDiv = gridCell.cloneNode(true);
+                gridDiv.style.width = '51.5px';
+                gridDiv.style.height = '51.5px';
+
+////Mouseover event listener
+            gridDiv.addEventListener('mouseover', function() {
+                this.style.border = 'solid blue 1px';
+                this.style.backgroundColor = 'blue';
+                // console.log('mouse over');
+
+                });
+/////MouseOut event listener
+            gridDiv.addEventListener('mouseout', function() {
+                this.style.border = 'solid red 1px';
+                this.style.backgroundColor = 'white';
+                // console.log('mouse out');
+                });
+
+
+
+
+
+            bodyContainer.append(gridDiv);
+
+        }   
+
+       
+///Duplicate grid cell
+        function duplicateGridDiv(number) {
+            number = 12;
+            let answer = number * 16;
+            for (let i = 0; i < number; i++) {
+                gridRow();
+                console.log(gridRow)
+               
+            }
+        }
+
+///Duplicate grid row
+        function duplicateGridRow(number) {
+            number = 16 ;//* 16;
+            for (let i = 0; i < number; i++) {
+                duplicateGridDiv();
+    
+            }
+        }
+        duplicateGridRow();
+
+    </script>
+
+</body>
+</html>
